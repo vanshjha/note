@@ -1,0 +1,28 @@
+html , body {
+  height: 100%;
+}
+body{
+  background: url('images/1.jpg') no-repeat top center fixed;
+  background-size: cover;
+}
+.row{
+  margin-top: 55px;
+  height:80%;
+}
+.bin{
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+}
+.bin img{
+  width: 60px;
+  height: 60px;
+}
+.active{
+  cursor: pointer;
+}
+.icon{
+  cursor: pointer;
+}
