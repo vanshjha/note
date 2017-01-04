@@ -48,7 +48,7 @@ function displayAll(){
 }
 
 function getCard(id,title,note,date){
-  return '<div id="'+id+'" class="col-lg-4 col-md-6 col-xs-12" draggable="true" ondragstart="drag(event)">'
+  return '<div id="'+id+'" class="col-lg-4 col-md-6 col-xs-12 wow bounceInUp" draggable="true" ondragstart="drag(event)">'
   +'<div class="panel panel-default">'
   +'<div class="panel-heading">'+title+'</div>'
   +'<div class="panel-body"><pre>'

@@ -19,3 +19,13 @@ var data = ev.dataTransfer.getData("note");
 document.getElementById(data).remove();
 removeNote(data);
 }
+
+//init niceScroll
+$(document).ready(
+  function() {
+    $("html").niceScroll();
+  }
+);
+
+//init wow js
+new WOW().init();
