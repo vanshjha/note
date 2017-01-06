@@ -1,8 +1,8 @@
 # NotesPlus
-keep &amp; organize your notes  
-simple site to store your notes locally on Web Sql  
-Designe & Developed By MotYim  
-Last Update : 04/01/2017  
+keep &amp; organize your notes with powerful way    
+simple site to store your notes locally on WebSql     
+Designe & Developed By MotYim    
+Last Update : 06/01/2017    
 
 ######change log
 1.create NotesPlus  
