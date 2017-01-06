@@ -32,22 +32,28 @@ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh
 
     <!-- Modal -->
 
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <form class="modal-content" onsubmit="return addNote()">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <button type="button" class="close" data-dismiss="modal"
+            aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="myModalLabel">Add New Note</h4>
           </div>
           <div class="modal-body">
-            <input type="text" class="form-control" id="title" placeholder="Note title"><br>
-            <textarea class="form-control" rows="3" id="note" placeholder="Write Note here..."></textarea>
+            <div class="alert alert-danger"  role="alert" id="error"><b>Error !</b>
+              please enter text on title and note body</div>
+            <input type="text" class="form-control" id="title"
+            placeholder="Note title" required><br>
+            <textarea class="form-control" rows="3" id="note"
+              placeholder="Write Note here..." required></textarea>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" id="add">ADD</button>
+            <button type="submit" class="btn btn-primary">ADD</button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
 
