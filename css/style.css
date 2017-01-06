@@ -26,3 +26,32 @@ body{
 .icon{
   cursor: pointer;
 }
+.card{
+  background: #3E4EB8;
+color: white;
+border-radius: 12px;
+padding: 13px;
+}
+.card .title {
+  text-align: center;
+    font-size: 22px;
+    border-bottom: 2px solid;
+    text-transform: uppercase;
+    overflow: hidden;
+}
+.card .text {
+  padding: 4px;
+border-bottom: 1px dotted;
+}
+.card .info{
+  padding: 2px;
+  overflow: hidden;
+}
+.card .icon{
+  float: right;
+}
+.grid-item {
+  width: 250px;
+  float: left;
+  margin-left: 3px;
+}

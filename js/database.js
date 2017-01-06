@@ -40,6 +40,7 @@ function displayAll(){
       var code ='';
       for (i = 0; i < len; i++){
         var obj = results.rows.item(i);
+        // TODO: Make it by append chaild
         code +=getCard(obj.id,obj.title,obj.note,obj.data);
       }
       cards.innerHTML = code;
@@ -48,14 +49,16 @@ function displayAll(){
 }
 
 function getCard(id,title,note,date){
-  return '<div id="'+id+'" class="col-lg-4 col-md-6 col-xs-12 wow bounceInUp" draggable="true" ondragstart="drag(event)">'
-  +'<div class="panel panel-default">'
-  +'<div class="panel-heading">'+title+'</div>'
-  +'<div class="panel-body"><pre>'
-  +note
-  +'</pre><hr>'
-  +'Data : '+date +'| <span class="glyphicon glyphicon-trash icon" onclick="deleteCard('+id+')"></span>'
-  +'</div></div></div>';
+  return '<div id="'+id+'" class="col-lg-4 col-md-6 col-xs-12 wow bounceInUp" draggable="true" ondragstart="drag(event)">\
+    <div class="card">\
+      <div class="title">'+title+'</div>\
+      <div class="text">\
+      '+note+'\
+      </div>\
+      <div class="info">data : '+date+' \
+      <span class="glyphicon glyphicon-trash icon" onclick="deleteCard('+id+')"></span></div>\
+    </div>\
+    </div>';
 }
 function getData(){
    var date   = new Date();
@@ -67,5 +70,4 @@ function getData(){
 function deleteCard(id){
   document.getElementById(id).remove();
   removeNote(id);
-  displayAll();
 }
