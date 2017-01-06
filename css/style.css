@@ -54,3 +54,74 @@ body{
 #error{
   display: none;
 }
+
+.color {
+  width: 20px;
+  position: relative;
+  margin: 8px auto;
+  display: inline-block;
+}
+.color label {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #3E4EB8;
+  border-radius: 11px;
+}
+.River label{
+  background: #3498db;
+}
+.turquoise label{
+  background: #1abc9c;
+}
+.sunflower label{
+  background: #f1c40f;
+}
+.carpot label{
+  background: #e67e22;
+}
+.Alizarin label{
+  background:#e74c3c;
+}
+.clouds label{
+  background: #ecf0f1;
+}
+
+.color label:after {
+  content: '';
+  width: 9px;
+  height: 5px;
+  position: absolute;
+  top: 7px;
+left: 6px;
+  border: 3px solid #333;
+  border-top: none;
+  border-right: none;
+  background: transparent;
+  opacity: 0;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+.color label:hover::after {
+  opacity: 0.5;
+}
+.color input[type=checkbox] {
+  visibility: hidden;
+}
+.color input[type=checkbox]:checked + label:after {
+  opacity: 1;
+}
+.copyright{
+  color: white;
+    position: fixed;
+    bottom: 0px;
+    background: black;
+    padding: 3px;
+    border-radius: 5px;
+}
+.copyright span {
+  color: red;
+}

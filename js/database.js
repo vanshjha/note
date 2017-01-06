@@ -1,34 +1,49 @@
-var db = openDatabase('notes', '1.0', 'database for notes', 2 * 1024 * 1024);
+var db = openDatabase('notes', '1.0', 'database for notes', 2 * 1024 * 1024),
+addBtn = document.getElementById('addBtn');
 
 //create database
 db.transaction(function (tx) {
-  tx.executeSql('CREATE TABLE IF NOT EXISTS MYNOTES_1 (id INTEGER PRIMARY KEY ASC, title , note ,data)');
+  tx.executeSql('CREATE TABLE IF NOT EXISTS MYNOTES_2 (id INTEGER PRIMARY KEY ASC, title , note ,data,color)');
 });
 
+addBtn.addEventListener('click',clearAlert)
+
+//handle checkbox choose only one
+$('input[type="checkbox"]').on('change', function() {
+  $('input[type="checkbox"]').not(this).prop('checked', false);
+});
 
 //displayAll notes
 displayAll();
 
+function clearAlert(){
+  document.getElementById('error').style.display ='none';
+}
+
 function addNote(){
-  // TODO: check if empty
-  // TODO: add color picker
+
   var title = document.getElementById('title'),
   note  = document.getElementById('note') ,
   date  = getData() ,
   // NOTE: Not work if use title.value direct inside execute
-  title_v = title.value , note_v = note.value ;
+  title_v = title.value , note_v = note.value ,color  ;
+
+  //get checkbox color
+  $("input[name=color]:checked").each( function () {
+    color = $(this).val();
+  });
 
   //if empty title or note text
   if(!title_v.trim() || !note_v.trim() ){
     document.getElementById('error').style.display = 'block';
   }else{
-    document.getElementById('error').style.display ='none';
-
     db.transaction(function (tx) {
-      tx.executeSql('INSERT INTO MYNOTES_1 (title, note ,data) VALUES (?, ?, ?)', [title_v,note_v , date]);
+      tx.executeSql('INSERT INTO MYNOTES_2 (title, note ,data,color) VALUES (?, ?, ?, ?)', [title_v,note_v , date,color]);
     });
-
+    document.getElementById('error').style.display ='none';
     $('#myModal').modal('toggle');
+
+
     displayLastNote();
   }
 
@@ -39,12 +54,11 @@ function addNote(){
 }
 
 function displayLastNote() {
-  console.log('hi');
   db.transaction(function (tx) {
-    tx.executeSql('SELECT * FROM MYNOTES_1 ORDER BY id DESC LIMIT 1', [], function (tx, results) {
+    tx.executeSql('SELECT * FROM MYNOTES_2 ORDER BY id DESC LIMIT 1', [], function (tx, results) {
       var cards = document.getElementById('cards');
       var obj = results.rows.item(0);
-      var code =getCard(obj.id,obj.title,obj.note,obj.data);
+      var code =getCard(obj.id,obj.title,obj.note,obj.data,obj.color);
       $('#cards').append(code);
     }, null);
   });
@@ -52,22 +66,22 @@ function displayLastNote() {
 
 function displayAll(){
   db.transaction(function (tx) {
-    tx.executeSql('SELECT * FROM MYNOTES_1', [], function (tx, results) {
+    tx.executeSql('SELECT * FROM MYNOTES_2', [], function (tx, results) {
       var len = results.rows.length, i;
       var cards = document.getElementById('cards');
       var code ='';
       for (i = 0; i < len; i++){
         var obj = results.rows.item(i);
-        code +=getCard(obj.id,obj.title,obj.note,obj.data);
+        code +=getCard(obj.id,obj.title,obj.note,obj.data,obj.color);
       }
       cards.innerHTML = code;
     }, null);
   });
 }
 
-function getCard(id,title,note,date){
+function getCard(id,title,note,date,color){
   return '<div id="'+id+'" class="col-lg-4 col-md-6 col-xs-12 wow bounceInUp" draggable="true" ondragstart="drag(event)">\
-  <div class="card">\
+  <div class="card" style="background:'+color+';">\
   <div class="title">'+title+'</div>\
   <div class="text">\
   '+note+'\
