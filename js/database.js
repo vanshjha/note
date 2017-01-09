@@ -3,7 +3,7 @@ addBtn = document.getElementById('addBtn');
 
 //create database
 db.transaction(function (tx) {
-  tx.executeSql('CREATE TABLE IF NOT EXISTS MYNOTES_2 (id INTEGER PRIMARY KEY ASC, title , note ,data,color)');
+  tx.executeSql('CREATE TABLE IF NOT EXISTS MYNOTES (id INTEGER PRIMARY KEY ASC, title , note ,data,color)');
 });
 
 addBtn.addEventListener('click',clearAlert)
@@ -38,7 +38,7 @@ function addNote(){
     document.getElementById('error').style.display = 'block';
   }else{
     db.transaction(function (tx) {
-      tx.executeSql('INSERT INTO MYNOTES_2 (title, note ,data,color) VALUES (?, ?, ?, ?)', [title_v,note_v , date,color]);
+      tx.executeSql('INSERT INTO MYNOTES (title, note ,data,color) VALUES (?, ?, ?, ?)', [title_v,note_v , date,color]);
     });
     document.getElementById('error').style.display ='none';
     $('#myModal').modal('toggle');
@@ -55,7 +55,7 @@ function addNote(){
 
 function displayLastNote() {
   db.transaction(function (tx) {
-    tx.executeSql('SELECT * FROM MYNOTES_2 ORDER BY id DESC LIMIT 1', [], function (tx, results) {
+    tx.executeSql('SELECT * FROM MYNOTES ORDER BY id DESC LIMIT 1', [], function (tx, results) {
       var cards = document.getElementById('cards');
       var obj = results.rows.item(0);
       var code =getCard(obj.id,obj.title,obj.note,obj.data,obj.color);
@@ -66,7 +66,7 @@ function displayLastNote() {
 
 function displayAll(){
   db.transaction(function (tx) {
-    tx.executeSql('SELECT * FROM MYNOTES_2', [], function (tx, results) {
+    tx.executeSql('SELECT * FROM MYNOTES', [], function (tx, results) {
       var len = results.rows.length, i;
       var cards = document.getElementById('cards');
       var code ='';
@@ -107,6 +107,6 @@ function deleteCard(id){
 //remove note from database
 function removeNote(id){
   db.transaction(function (tx) {
-    tx.executeSql('DELETE FROM MYNOTES_1 WHERE id = ?', [id]);
+    tx.executeSql('DELETE FROM MYNOTES WHERE id = ?', [id]);
   });
 }
