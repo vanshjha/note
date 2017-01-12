@@ -94,7 +94,7 @@ function getCard(id,title,note,date,color){
 function getData(){
   var date   = new Date();
   var month  = date.getMonth()+1;
-  var day    = date.getDay()+1;
+  var day    = date.getDate();
   var year   = date.getFullYear();
   return day +'/'+month+'/'+year;
 }
