@@ -28,7 +28,7 @@ And of course NotePlus itself is open source.
 NotesPlus Work only on Google Chrome, Opera, Safari and the Android Browser.   
 
 
-   [df1]: <http://daringfireball.net/projects/markdown/>
+   [df1]: <https://motyim.github.io/NotesPlus/>
    [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
    [Nicescroll 3]: <https://areaaperta.com/nicescroll/>
    [wow.js]:<https://wowjs.uk/>
