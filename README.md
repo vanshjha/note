@@ -43,5 +43,5 @@ NotesPlus Work only on Google Chrome, Opera, Safari and the Android Browser.
 6.Add Colors To Style Notes  
 7.Change Style of Notes  
 
-Designe & Developed By MotYim    
-Last Update : 06/01/2017 
+Designe & Developed Vansh   
+Last Update : 06/01/2022
